@@ -1,18 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Aula de PW II</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <style>
+        body {
+            background-color: #4b5320; 
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 550px;
+        
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 3px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4b5320;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3b431a;
+        }
+    </style>
 </head>
-<body bgcolor="#8a2be2">
-<form action="/novo" method="post">
-    Nome:
-    <input type="text" name="nome"/>
+<body>
+    <div class="form-container">
+        <h1>Enunciado do problema</h1>
+        <form method="POST">
+            <label>Nome:</label><br>
+            <input type="text" name="nome" required><br>
 
-    Aniversario
-    <input type="date" name="aniversario"/>
+            <label>Formação:</label><br>
+            <input type="text" name="formacao" required><br>
 
-    <input type="submit" value="salvar">
-</form>
+            <label>Curso:</label><br>
+            <input type="text" name="curso" required><br>
+
+            <label>Instituição:</label><br>
+            <input type="text" name="instituicao" required><br>
+
+            <label>Ano de formação:</label><br>
+            <input type="number" name="ano_formacao" required><br>
+
+            <label>Experiência profissional:</label><br>
+            <input type="text" name="experiencia" required><br>
+
+            <label>Empresa:</label><br>
+            <input type="text" name="empresa" required><br>
+
+            <label>Ano de experiência:</label><br>
+            <input type="number" name="ano_experiencia" required><br>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
 </body>
 </html>
