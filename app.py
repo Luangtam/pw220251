@@ -1,10 +1,16 @@
 from flask import Flask, render_template, request
+from model.Conexao import Base
 
 app = Flask(__name__)
 
-# exemplo de uma rota devolvendo apenas um texto.
+from controller.UsuarioController import *
+
+if __name__== '__main__':
+    Base.metadata.create_all(bind=engine)
+    app.run()
+
 @app.route('/', methods=['GET'])
-def hello_world():  # put application's code here
+def hello_world():
     return 'Hello World!'
 
 # exemplo de uma rota que devolve um pagina de um template.
