@@ -25,3 +25,43 @@ def create():
     db.add(usuario)
     db.commit()
     return jsonify({'msg': 'salvo com sucesso'}), 200
+
+@app.route("/usuarios/<int:id>", methods=['GET'])
+def get_usuarios(id):
+    db = SessionLocal()
+    usu = db.query(Usuario).get(id)
+    if (usu):
+        return jsonify(usu.to_dict()), 200
+    else:
+        return jsonify({'msg': 'Usuário não encontrado'}), 404
+
+@app.route("/usuarios/<int:id>", methods=['DELETE'])
+def del_usuarios(id):
+    db = SessionLocal()
+    usu = db.query(Usuario).get(id)
+    if (usu):
+        db.delete(usu)
+        db.commit()
+        return jsonify({'msg': 'Usuário apagado'}), 204
+    else:
+        return jsonify({'msg': 'Usuário não encontrado'}), 404
+
+@app.route("/usuarios", methods = ['POST'])
+def del_usuario():
+    db = SessionLocal()
+    data = request.get_json()
+    usuario = Usuario(nome=data['nome'], data=data['aniversario'])
+    db.add(usuario)
+    db.commit()
+    return jsonify({'msg': 'Usuário creiado com sucesso!', 'usu':usuario.to_dict()}), 201
+
+@app.route("/usuarios/<int:id>", methods = ['POST'])
+def update_usuario(id):
+    db = SessionLocal()
+    ub = db.query(usuarios).get(id)
+    data = request.get_json()
+    ub.nome = data['nome']
+    ub.data = data['aniversario']
+    db.commit()
+    return jsonify({'msg': 'Usuário atualizado com sucesso!', 'usu':ub.to_dict()}), 200
+
