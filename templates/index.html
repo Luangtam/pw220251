@@ -13,6 +13,29 @@
     <input type="date" name="aniversario"/>
 
     <input type="submit" value="salvar">
+
+    <div class="tabela">
+        <table>
+            <thead>
+            <tr>
+                <th> Nome </th>
+                <th> Aniversário </th>
+                <th> Editar</th>
+                <th> Excluir</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for usuarios in obj %}
+            <tr>
+                <td> {{usuarios.nome}}</td>
+                <td> {{usuarios.data}} </td>
+                <td> <a href="#"> Editar</a></td>
+                <td> <a href="{{url_for('del_usuarios',id=usuarios.id)}}"> Excluir</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </form>
 </body>
 </html>
